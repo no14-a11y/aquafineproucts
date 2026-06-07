@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aquafine Products – Premium Seafood Traders & Exporters</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --navy: #03111f;
+    --deep: #050e1a;
+    --ocean: #062340;
+    --teal: #0a6e8a;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-pale: #f5e4b0;
+    --white: #f8f6f0;
+    --muted: #8a9ab0;
+    --card-bg: rgba(6, 35, 64, 0.7);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep);
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor {
+    position: fixed; top: 0; left: 0;
+    width: 12px; height: 12px;
+    background: var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%,-50%);
+    transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+  }
+  .cursor-ring {
+    position: fixed; top: 0; left: 0;
+    width: 40px; height: 40px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%,-50%);
+    transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 1.2rem 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(3, 17, 31, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    transition: all 0.4s;
+  }
+  nav.scrolled { padding: 0.8rem 5%; background: rgba(3,17,31,0.98); }
+
+  .nav-logo img { height: 48px; filter: brightness(1.1); }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1px; background: var(--gold);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 0.55rem 1.4rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: none;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--navy); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    background: var(--navy);
+  }
+
+  .hero-video-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(0,180,220,0.55) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 60%, rgba(0,120,180,0.45) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 90%, rgba(0,60,120,0.7) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 10%, rgba(30,200,210,0.3) 0%, transparent 45%),
+      linear-gradient(180deg, #0099cc 0%, #006da0 25%, #004e8a 55%, #003060 100%);
+    animation: ocean-shift 12s ease-in-out infinite alternate;
+  }
+  .hero-video-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 40%, rgba(100,220,255,0.18) 0%, transparent 40%),
+      radial-gradient(ellipse at 75% 30%, rgba(60,190,240,0.15) 0%, transparent 35%);
+    animation: caustics 8s ease-in-out infinite alternate;
+  }
+  .hero-video-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom,
+      rgba(0,30,60,0.25) 0%,
+      rgba(0,20,50,0.05) 40%,
+      rgba(0,15,40,0.65) 100%);
+  }
+  @keyframes ocean-shift {
+    0%   { filter: hue-rotate(0deg) brightness(1);   }
+    50%  { filter: hue-rotate(8deg) brightness(1.08); }
+    100% { filter: hue-rotate(-5deg) brightness(0.95); }
+  }
+  @keyframes caustics {
+    0%   { transform: scale(1) translate(0,0);      opacity: 0.6; }
+    50%  { transform: scale(1.15) translate(2%,1%); opacity: 1;   }
+    100% { transform: scale(0.95) translate(-1%,2%);opacity: 0.7; }
+  }
+
+  /* Animated waves */
+  .wave-container {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 200px; overflow: hidden;
+  }
+  .wave {
+    position: absolute; bottom: 0; left: -100%; width: 300%;
+    height: 200px; opacity: 0.08;
+  }
+  .wave svg { width: 100%; height: 100%; }
+  .wave1 { animation: wave-move 8s linear infinite; }
+  .wave2 { animation: wave-move 12s linear infinite reverse; opacity: 0.05; }
+  @keyframes wave-move { 0% { transform: translateX(0); } 100% { transform: translateX(33.33%); } }
+
+  /* Floating particles */
+  .particles { position: absolute; inset: 0; overflow: hidden; }
+  .particle {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-particle linear infinite;
+  }
+  @keyframes float-particle {
+    0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(-10vh) translateX(20px); opacity: 0; }
+  }
+
+  .hero-content {
+    position: relative; z-index: 10;
+    text-align: center;
+    padding: 0 2rem;
+    max-width: 900px;
+  }
+
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    opacity: 0; transform: translateY(30px);
+    animation: fade-up 1s ease 0.5s forwards;
+  }
+  .hero-title em {
+    font-style: italic; color: var(--gold-light);
+    display: block;
+  }
+
+  .hero-divider {
+    width: 60px; height: 1px; background: var(--gold);
+    margin: 2rem auto;
+    opacity: 0; transform: scaleX(0);
+    animation: scale-in 0.8s ease 1s forwards;
+  }
+  @keyframes scale-in { to { opacity: 1; transform: scaleX(1); } }
+
+  .hero-subtitle {
+    font-size: 0.85rem; letter-spacing: 0.1em;
+    color: var(--muted); line-height: 1.8;
+    max-width: 560px; margin: 0 auto 3rem;
+    opacity: 0; transform: translateY(20px);
+    animation: fade-up 0.8s ease 1.1s forwards;
+  }
+
+  .hero-btns {
+    display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;
+    opacity: 0; transform: translateY(20px);
+    animation: fade-up 0.8s ease 1.3s forwards;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.95rem 2.5rem;
+    font-size: 0.72rem; letter-spacing: 0.18em;
+    text-transform: uppercase; font-weight: 700;
+    text-decoration: none; cursor: none;
+    transition: all 0.3s; border: none;
+    font-family: 'Montserrat', sans-serif;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--gold-light);
+    padding: 0.95rem 2.5rem;
+    font-size: 0.72rem; letter-spacing: 0.18em;
+    text-transform: uppercase; font-weight: 600;
+    text-decoration: none; cursor: none;
+    border: 1px solid rgba(201,168,76,0.5);
+    transition: all 0.3s;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); transform: translateY(-2px); }
+
+  @keyframes fade-up { to { opacity: 1; transform: translateY(0); } }
+
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--muted); z-index: 10;
+    animation: fade-up 0.8s ease 2s forwards; opacity: 0;
+  }
+  .scroll-line {
+    width: 1px; height: 50px; background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scroll-pulse 2s ease-in-out infinite;
+  }
+  @keyframes scroll-pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--gold);
+    padding: 1.5rem 5%;
+    display: flex; justify-content: center; gap: 6rem; flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 700;
+    color: var(--navy); line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(3,17,31,0.7); margin-top: 0.3rem;
+  }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 2; }
+
+  .section-tag {
+    font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300; line-height: 1.1;
+    color: var(--white);
+  }
+  .section-title em { font-style: italic; color: var(--gold-light); }
+  .section-divider {
+    width: 50px; height: 1px; background: var(--gold);
+    margin: 1.5rem 0 2rem;
+  }
+
+  /* ABOUT */
+  #about {
+    padding: 8rem 5%;
+    background: var(--navy);
+  }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6rem; align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .about-img-wrap {
+    position: relative;
+  }
+  .about-img-wrap img {
+    width: 100%; height: 550px; object-fit: cover;
+    filter: brightness(0.85) saturate(1.2);
+  }
+  .about-img-border {
+    position: absolute; top: 20px; left: 20px; right: -20px; bottom: -20px;
+    border: 1px solid rgba(201,168,76,0.3);
+    z-index: -1;
+  }
+  .about-badge {
+    position: absolute; bottom: -1.5rem; right: -1.5rem;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 1.5rem 2rem;
+    text-align: center;
+  }
+  .about-badge-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 700; line-height: 1;
+  }
+  .about-badge-text { font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 0.3rem; }
+
+  .about-text p {
+    font-size: 0.9rem; line-height: 1.9; color: var(--muted); margin-bottom: 1.2rem;
+  }
+  .about-features { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+  .about-feature {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1rem 1.2rem;
+    border: 1px solid rgba(201,168,76,0.12);
+    background: rgba(6,35,64,0.4);
+    transition: border-color 0.3s;
+  }
+  .about-feature:hover { border-color: rgba(201,168,76,0.4); }
+  .feature-icon { color: var(--gold); font-size: 1.1rem; margin-top: 2px; flex-shrink: 0; }
+  .feature-title { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 0.3rem; font-weight: 600; }
+  .feature-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+
+  /* CATALOGUE */
+  #catalogue {
+    padding: 8rem 5%;
+    background: linear-gradient(rgba(5,14,26,0.93), rgba(5,14,26,0.93)), url('https://images.unsplash.com/photo-1437622368342-7a3d73a34c8f?w=1600&q=80&fit=crop') center/cover fixed;
+  }
+  .catalogue-header { text-align: center; margin-bottom: 4rem; }
+  .catalogue-header .section-divider { margin: 1.5rem auto 2rem; }
+
+  .catalogue-tabs {
+    display: flex; justify-content: center; gap: 0; margin-bottom: 3.5rem;
+    border: 1px solid rgba(201,168,76,0.2);
+    width: fit-content; margin-left: auto; margin-right: auto;
+  }
+  .tab-btn {
+    padding: 0.75rem 2rem;
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif; font-weight: 600;
+    background: transparent; border: none; color: var(--muted);
+    cursor: none; transition: all 0.3s;
+    border-right: 1px solid rgba(201,168,76,0.2);
+  }
+  .tab-btn:last-child { border-right: none; }
+  .tab-btn.active { background: var(--gold); color: var(--navy); }
+  .tab-btn:hover:not(.active) { background: rgba(201,168,76,0.08); color: var(--gold-light); }
+
+  .catalogue-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px; max-width: 1200px; margin: 0 auto;
+    background: rgba(201,168,76,0.1);
+  }
+  .catalogue-grid.hidden { display: none; }
+
+  .product-card {
+    position: relative; overflow: hidden;
+    aspect-ratio: 4/3;
+    background: var(--ocean);
+    cursor: none;
+  }
+  .product-card img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s;
+    filter: brightness(0.75) saturate(1.1);
+  }
+  .product-card:hover img { transform: scale(1.08); filter: brightness(0.5) saturate(1.3); }
+
+  .product-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(3,17,31,0.95) 0%, rgba(3,17,31,0.3) 60%, transparent 100%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 2rem;
+    transition: background 0.4s;
+  }
+  .product-card:hover .product-overlay {
+    background: linear-gradient(to top, rgba(3,17,31,0.98) 0%, rgba(3,17,31,0.7) 100%);
+  }
+
+  .product-category {
+    font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.4rem;
+    transform: translateY(10px); opacity: 0;
+    transition: all 0.4s;
+  }
+  .product-card:hover .product-category { transform: translateY(0); opacity: 1; }
+
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 400; color: var(--white); line-height: 1.2;
+  }
+
+  .product-desc {
+    font-size: 0.72rem; color: var(--muted); line-height: 1.6;
+    margin-top: 0.6rem; max-height: 0; overflow: hidden;
+    transition: max-height 0.4s, margin-top 0.4s;
+  }
+  .product-card:hover .product-desc { max-height: 100px; margin-top: 0.8rem; }
+
+  .product-inquiry {
+    display: inline-block; margin-top: 1rem;
+    font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px; text-decoration: none;
+    opacity: 0; transform: translateY(10px);
+    transition: all 0.4s 0.1s;
+  }
+  .product-card:hover .product-inquiry { opacity: 1; transform: translateY(0); }
+
+  /* CERTIFICATIONS */
+  #certifications {
+    padding: 6rem 5%;
+    background: var(--navy);
+    text-align: center;
+  }
+  .cert-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem; max-width: 1000px; margin: 3.5rem auto 0;
+  }
+  .cert-card {
+    padding: 2.5rem 1.5rem;
+    border: 1px solid rgba(201,168,76,0.15);
+    background: rgba(6,35,64,0.4);
+    transition: all 0.4s;
+    position: relative; overflow: hidden;
+  }
+  .cert-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.05), transparent);
+    opacity: 0; transition: opacity 0.4s;
+  }
+  .cert-card:hover { border-color: rgba(201,168,76,0.5); transform: translateY(-5px); }
+  .cert-card:hover::before { opacity: 1; }
+  .cert-icon { font-size: 2rem; color: var(--gold); margin-bottom: 1rem; }
+  .cert-title { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; color: var(--gold-light); margin-bottom: 0.5rem; }
+  .cert-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.6; }
+
+  /* CONTACT */
+  #contact {
+    padding: 8rem 5%;
+    background: var(--deep);
+  }
+  .contact-wrapper {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: start;
+  }
+  .contact-info p {
+    font-size: 0.85rem; color: var(--muted); line-height: 1.9; margin-bottom: 3rem;
+  }
+  .contact-items { display: flex; flex-direction: column; gap: 1.5rem; }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 1.2rem;
+    padding: 1.2rem 1.5rem;
+    border: 1px solid rgba(201,168,76,0.12);
+    background: rgba(6,35,64,0.3);
+    transition: border-color 0.3s;
+  }
+  .contact-item:hover { border-color: rgba(201,168,76,0.4); }
+  .contact-item-icon {
+    width: 42px; height: 42px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 0.9rem; flex-shrink: 0;
+  }
+  .contact-item-label {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.4rem;
+  }
+  .contact-item-value {
+    font-size: 0.82rem; color: var(--white); line-height: 1.5; text-decoration: none;
+  }
+  .contact-item-value:hover { color: var(--gold-light); }
+
+  .social-row {
+    display: flex; gap: 1rem; margin-top: 2.5rem;
+  }
+  .social-btn {
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--muted); font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .social-btn:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+  .whatsapp-btn {
+    background: rgba(37,211,102,0.1);
+    border-color: rgba(37,211,102,0.3);
+    color: #25d366;
+    font-size: 1.1rem;
+    padding: 0 1.5rem; width: auto;
+    gap: 0.6rem;
+    font-size: 0.72rem; letter-spacing: 0.1em; font-family: 'Montserrat', sans-serif;
+  }
+  .whatsapp-btn:hover { background: #25d366; color: white; border-color: #25d366; }
+
+  /* CONTACT FORM */
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-group label {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .form-group input, .form-group textarea, .form-group select {
+    background: rgba(6,35,64,0.5);
+    border: 1px solid rgba(201,168,76,0.15);
+    color: var(--white);
+    padding: 0.85rem 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem;
+    outline: none;
+    transition: border-color 0.3s;
+    cursor: none;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color: rgba(201,168,76,0.5);
+  }
+  .form-group textarea { resize: vertical; min-height: 130px; }
+  .form-group select option { background: var(--ocean); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .submit-btn {
+    background: var(--gold); color: var(--navy);
+    border: none; padding: 1rem 2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.18em;
+    text-transform: uppercase; font-weight: 700;
+    cursor: none; transition: all 0.3s;
+    display: flex; align-items: center; gap: 0.6rem;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  .submit-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background: #020c15;
+    padding: 3.5rem 5% 2rem;
+    border-top: 1px solid rgba(201,168,76,0.1);
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    flex-wrap: wrap; gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .footer-logo img { height: 42px; filter: brightness(0.9); margin-bottom: 1rem; }
+  .footer-tagline { font-size: 0.72rem; color: var(--muted); max-width: 280px; line-height: 1.7; }
+  .footer-links h4 {
+    font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.2rem;
+  }
+  .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-links a { font-size: 0.78rem; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    max-width: 1200px; margin: 1.5rem auto 0;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-copy { font-size: 0.68rem; color: rgba(138,154,176,0.6); }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.15s; }
+  .reveal-delay-2 { transition-delay: 0.3s; }
+  .reveal-delay-3 { transition-delay: 0.45s; }
+
+  /* HAMBURGER MOBILE */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: none; }
+  .hamburger span { width: 24px; height: 1.5px; background: var(--gold); transition: all 0.3s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .about-grid { grid-template-columns: 1fr; gap: 4rem; }
+    .contact-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+    .cert-grid { grid-template-columns: repeat(2,1fr); }
+    .catalogue-grid { grid-template-columns: repeat(2,1fr); }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .stats-bar { gap: 2rem; }
+    .catalogue-grid { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .catalogue-tabs { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <img src="https://aquafineproducts.com/wp-content/uploads/2021/05/cropped-Logo-2-350x75.png" alt="Aquafine Products">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#catalogue">Catalogue</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get a Quote</a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-video-bg"></div>
+  <div class="particles" id="particles"></div>
+  <div class="wave-container">
+    <div class="wave wave1">
+      <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
+        <path d="M0,100 C150,180 350,20 600,100 C850,180 1050,20 1200,100 L1200,200 L0,200 Z" fill="#c9a84c"/>
+      </svg>
+    </div>
+    <div class="wave wave2">
+      <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
+        <path d="M0,120 C200,40 400,160 600,80 C800,0 1000,140 1200,80 L1200,200 L0,200 Z" fill="#0a6e8a"/>
+      </svg>
+    </div>
+  </div>
+  <div class="hero-content">
+
+    <h1 class="hero-title">
+      Premium Seafood<br>
+      <em>From Ocean to World</em>
+    </h1>
+    <div class="hero-divider"></div>
+    <p class="hero-subtitle">
+      Aquafine Products is India's premier seafood exporter — delivering exceptional quality shrimp, fish, and cephalopods to global markets with unwavering standards.
+    </p>
+    <div class="hero-btns">
+      <a href="#catalogue" class="btn-primary">View Catalogue</a>
+      <a href="https://wa.me/919847694222" class="btn-outline" target="_blank" style="display:flex;align-items:center;gap:0.6rem;border-color:#25d366;color:#25d366;"><i class="fab fa-whatsapp" style="font-size:1.1rem;"></i> WhatsApp Us</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat reveal">
+    <div class="stat-num">20+</div>
+    <div class="stat-label">Years of Excellence</div>
+  </div>
+  <div class="stat reveal reveal-delay-1">
+    <div class="stat-num">15+</div>
+    <div class="stat-label">Approved Packers</div>
+  </div>
+  <div class="stat reveal reveal-delay-2">
+    <div class="stat-num">50+</div>
+    <div class="stat-label">Global Markets</div>
+  </div>
+  <div class="stat reveal reveal-delay-3">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Quality Assured</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal">
+      <img src="https://images.unsplash.com/photo-1498654200943-1088dd4438ae?w=900&q=80&fit=crop" alt="Aquafine Seafood Operations">
+      <div class="about-img-border"></div>
+      <div class="about-badge">
+        <div class="about-badge-num">2001</div>
+        <div class="about-badge-text">Est. Kerala, India</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <p class="section-tag reveal">Our Story</p>
+      <h2 class="section-title reveal reveal-delay-1">
+        Trading Excellence<br><em>Since Two Decades</em>
+      </h2>
+      <div class="section-divider reveal reveal-delay-2"></div>
+      <p class="reveal reveal-delay-2">
+        Aquafine Products is one of India's leading seafood traders and export representatives, headquartered at White Water's Phase 2, Thevara, Cochin — with offices extending into Oman. Our deep roots in Kerala's coastline give us unparalleled access to the finest marine harvests.
+      </p>
+      <p class="reveal reveal-delay-2">
+        With over 15 FDA & EU approved packing units spanning all coastal regions, we ensure every shipment meets the highest international standards — from harvest to delivery.
+      </p>
+      <div class="about-features">
+        <div class="about-feature reveal reveal-delay-1">
+          <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+          <div>
+            <div class="feature-title">FDA & EU Certified</div>
+            <div class="feature-desc">All 15+ partner packers hold full international certifications for global market access.</div>
+          </div>
+        </div>
+        <div class="about-feature reveal reveal-delay-2">
+          <div class="feature-icon"><i class="fas fa-ship"></i></div>
+          <div>
+            <div class="feature-title">Global Export Network</div>
+            <div class="feature-desc">Exporting to UAE, USA, EU, China, Japan and 50+ markets worldwide.</div>
+          </div>
+        </div>
+        <div class="about-feature reveal reveal-delay-3">
+          <div class="feature-icon"><i class="fas fa-snowflake"></i></div>
+          <div>
+            <div class="feature-title">IQF & Block Frozen</div>
+            <div class="feature-desc">All specifications available — cooked, H/L, PUD, Blanched, Block or IQF as per client needs.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATALOGUE -->
+<section id="catalogue">
+  <div class="catalogue-header">
+    <p class="section-tag reveal">Our Products</p>
+    <h2 class="section-title reveal reveal-delay-1">Premium <em>Seafood Catalogue</em></h2>
+    <div class="section-divider reveal reveal-delay-2"></div>
+  </div>
+
+  <div class="catalogue-tabs reveal">
+    <button class="tab-btn active" data-tab="shrimps">Shrimps</button>
+    <button class="tab-btn" data-tab="fish">Fish</button>
+    <button class="tab-btn" data-tab="cephalopods">Cephalopods</button>
+  </div>
+
+  <!-- SHRIMPS -->
+  <div class="catalogue-grid" id="tab-shrimps">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1559737558-2f5a35f4523b?w=900&q=80&fit=crop" alt="Vannamei Shrimp" >
+      <div class="product-overlay">
+        <div class="product-category">Premium Shrimp</div>
+        <div class="product-name">Vannamei Shrimp</div>
+        <div class="product-desc">Pacific white shrimp — available in all forms: H/L, PUD, cooked, IQF, Block Frozen. A top export product from our coastal processors.</div>
+        <a href="#contact" class="product-inquiry">Enquire Now →</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1625943553852-781c6e73cbeb?w=900&q=80&fit=crop" alt="Black Tiger Shrimp" >
+      <div class="product-overlay">
+        <div class="product-category">Premium Shrimp</div>
+        <div class="product-name">Black Tiger Shrimp</div>
+        <div class="product-desc">Bold and majestic — the Black Tiger Shrimp is a delicacy prized in upscale markets worldwide. Available colossal sizes across all processing specifications.</div>
+        <a href="#contact" class="product-inquiry">Enquire Now →</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=900&q=80&fit=crop" alt="Sea Caught Shrimps" onerror="this.src='https://images.unsplash.com/photo-1559737558-2f5a35f4523b?w=800'">
+      <div class="product-overlay">
+        <div class="product-category">Wild Caught</div>
+        <div class="product-name">Sea Caught Shrimps</div>
+        <div class="product-desc">Wild-harvested from the rich waters of the Indian Ocean. Naturally flavourful, available in multiple grades, sizes and processing forms.</div>
+        <a href="#contact" class="product-inquiry">Enquire Now →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FISH -->
+  <div class="catalogue-grid hidden" id="tab-fish">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&q=80&fit=crop" alt="Swordfish">
+      <div class="product-overlay">
+        <div class="product-category">Premium Fish</div>
+        <div class="product-name">Sword Fish</div>
+        <div class="product-desc">The ocean's gladiator — Swordfish offer firm, mildly sweet flesh ideal for premium restaurant and retail markets worldwide.</div>
+        <a href="#contact" class="product-inquiry">Enquire Now →</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=900&q=80&fit=crop" alt="Yellowfin Tuna">
+      <div class="product-overlay">
+        <div class="product-category">Premium Fish</div>
+        <div class="product-name">Yellow Fin Tuna</div>
+        <div class="product-desc">Sashimi-grade Yellowfin Tuna from the deep Indian Ocean — prized by Japan, USA and EU markets for its vibrant colour and rich flavour profile.</div>
+        <a href="#contact" class="product-inquiry">Enquire Now →</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1510130387422-82bed34b37e9?w=900&q=80&fit=crop" alt="Sailfish">
+      <div class="product-overlay">
+        <div class="product-category">Premium Fish</div>
+        <div class="product-name">Sail Fish</div>
+        <div class="product-desc">A majestic billfish from warm Indian Ocean waters — Sailfish offers lean, firm flesh sought by specialty markets and premium distributors.</div>
+        <a href="#contact" class="product-inquiry">Enquire Now →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CEPHALOPODS -->
+  <div class="catalogue-grid hidden" id="tab-cephalopods">
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1612528443702-f6741f70a049?w=900&q=80&fit=crop" alt="Cuttlefish">
+      <div class="product-overlay">
+        <div class="product-category">Cephalopods</div>
+        <div class="product-name">Cuttle Fish</div>
+        <div class="product-desc">Highly prized in Mediterranean and Asian markets — Cuttlefish available cleaned whole, tentacles, and tubes in all specifications.</div>
+        <a href="#contact" class="product-inquiry">Enquire Now →</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=900&q=80&fit=crop" alt="Squid">
+      <div class="product-overlay">
+        <div class="product-category">Cephalopods</div>
+        <div class="product-name">Squid</div>
+        <div class="product-desc">Whole round or cleaned squid from the Indian Ocean — versatile and in high demand across European, Middle Eastern and Asian markets.</div>
+        <a href="#contact" class="product-inquiry">Enquire Now →</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1519984388953-d2406bc725e1?w=900&q=80&fit=crop" alt="Octopus">
+      <div class="product-overlay">
+        <div class="product-category">Cephalopods</div>
+        <div class="product-name">Octopus</div>
+        <div class="product-desc">Wild-caught octopus — available whole cleaned and tentacles, in premium export quality demanded by Spain, Portugal and Japan.</div>
+        <a href="#contact" class="product-inquiry">Enquire Now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <p class="section-tag reveal">Quality Assurance</p>
+  <h2 class="section-title reveal reveal-delay-1">Internationally <em>Certified</em></h2>
+  <div class="section-divider reveal reveal-delay-2" style="margin:1.5rem auto 0;"></div>
+  <div class="cert-grid">
+    <div class="cert-card reveal">
+      <div class="cert-icon"><i class="fas fa-award"></i></div>
+      <div class="cert-title">FDA Approved</div>
+      <div class="cert-desc">All partner units fully certified by the US Food & Drug Administration for American market access.</div>
+    </div>
+    <div class="cert-card reveal reveal-delay-1">
+      <div class="cert-icon"><i class="fas fa-globe-europe"></i></div>
+      <div class="cert-title">EU Health Certificate</div>
+      <div class="cert-desc">European Union compliant processing and export documentation across all product categories.</div>
+    </div>
+    <div class="cert-card reveal reveal-delay-2">
+      <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+      <div class="cert-title">HACCP Certified</div>
+      <div class="cert-desc">Hazard Analysis Critical Control Point protocols observed at every stage of our supply chain.</div>
+    </div>
+    <div class="cert-card reveal reveal-delay-3">
+      <div class="cert-icon"><i class="fas fa-snowflake"></i></div>
+      <div class="cert-title">Cold Chain Integrity</div>
+      <div class="cert-desc">End-to-end refrigerated logistics ensuring product freshness from processing unit to destination port.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrapper">
+    <div class="contact-info">
+      <p class="section-tag reveal">Get In Touch</p>
+      <h2 class="section-title reveal reveal-delay-1">Let's Discuss <em>Your Requirements</em></h2>
+      <div class="section-divider reveal reveal-delay-2"></div>
+      <p class="reveal reveal-delay-2">
+        At Aquafine Products we believe in delivering quality at competitive rates. Reach out to discuss business opportunities, product specifications, and export requirements.
+      </p>
+
+      <div class="contact-items">
+        <div class="contact-item reveal">
+          <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="contact-item-label">Address</div>
+            <div class="contact-item-value">White Water's Phase 2, Thevara,<br>Near Alexander Bridge, Cochin-682013,<br>Kerala, India</div>
+          </div>
+        </div>
+        <div class="contact-item reveal reveal-delay-1">
+          <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <div class="contact-item-label">Phone</div>
+            <a class="contact-item-value" href="tel:+919847694222">+91 98476 94222</a>
+          </div>
+        </div>
+        <div class="contact-item reveal reveal-delay-2">
+          <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <a class="contact-item-value" href="mailto:sales@aquafineproducts.com">sales@aquafineproducts.com</a><br>
+            <a class="contact-item-value" href="mailto:aquafine58@gmail.com">aquafine58@gmail.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-row reveal">
+        <a href="https://wa.me/919847694222" class="social-btn whatsapp-btn" target="_blank">
+          <i class="fab fa-whatsapp"></i> WhatsApp Us
+        </a>
+        <a href="mailto:aquafine58@gmail.com" class="social-btn" title="Gmail">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="#" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+
+    <div>
+      <p class="section-tag reveal">Send a Message</p>
+      <div class="contact-form reveal reveal-delay-1">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Full Name">
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Company Name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="you@company.com">
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="+1 234 567 8900">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Product Interest</label>
+          <select>
+            <option value="">Select Product Category</option>
+            <option>Vannamei Shrimp</option>
+            <option>Black Tiger Shrimp</option>
+            <option>Sea Caught Shrimp</option>
+            <option>Sword Fish</option>
+            <option>Yellow Fin Tuna</option>
+            <option>Sail Fish</option>
+            <option>Cuttle Fish</option>
+            <option>Squid</option>
+            <option>Octopus</option>
+            <option>Multiple Products</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Requirements</label>
+          <textarea placeholder="Describe your requirements — quantity, specifications, destination port, preferred processing form..."></textarea>
+        </div>
+        <button class="submit-btn" onclick="handleSubmit(this)">
+          <i class="fas fa-paper-plane"></i> Send Enquiry
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="https://aquafineproducts.com/wp-content/uploads/2021/05/cropped-Logo-2-350x75.png" alt="Aquafine Products">
+      <p class="footer-tagline">Premium seafood traders and exporters from Kerala, India — supplying global markets since 2001 with FDA & EU certified products.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#catalogue">Catalogue</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#catalogue">Vannamei Shrimp</a></li>
+        <li><a href="#catalogue">Black Tiger Shrimp</a></li>
+        <li><a href="#catalogue">Yellow Fin Tuna</a></li>
+        <li><a href="#catalogue">Sword Fish</a></li>
+        <li><a href="#catalogue">Squid & Octopus</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+919847694222">+91 98476 94222</a></li>
+        <li><a href="mailto:sales@aquafineproducts.com">sales@aquafineproducts.com</a></li>
+        <li><a href="mailto:aquafine58@gmail.com">aquafine58@gmail.com</a></li>
+        <li><a href="https://wa.me/919847694222">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Aquafine Products. All rights reserved. White Water's Phase 2, Thevara, Cochin – 682013, Kerala, India.</div>
+    <div class="footer-copy">FDA & EU Approved · HACCP Certified · Global Exporter</div>
+  </div>
+</footer>
+
+<script>
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cursor.style.left = mx+'px'; cursor.style.top = my+'px'; });
+  function animRing() {
+    rx += (mx - rx) * 0.12; ry += (my - ry) *.12;
+    ring.style.left = rx+'px'; ring.style.top = ry+'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+  document.querySelectorAll('a, button, .product-card, .cert-card, .social-btn').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.width='20px'; cursor.style.height='20px'; ring.style.width='60px'; ring.style.height='60px'; });
+    el.addEventListener('mouseleave', () => { cursor.style.width='12px'; cursor.style.height='12px'; ring.style.width='40px'; ring.style.height='40px'; });
+  });
+
+  // PARTICLES
+  const pContainer = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.cssText = `left:${Math.random()*100}%;width:${Math.random()*3+1}px;height:${Math.random()*3+1}px;animation-duration:${Math.random()*15+8}s;animation-delay:${Math.random()*10}s;opacity:${Math.random()*0.6};`;
+    pContainer.appendChild(p);
+  }
+
+  // NAV SCROLL
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // SCROLL REVEAL
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // CATALOGUE TABS
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.catalogue-grid').forEach(g => g.classList.add('hidden'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.remove('hidden');
+    });
+  });
+
+
+
+  // FORM SUBMIT
+  function handleSubmit(btn) {
+    btn.innerHTML = '<i class="fas fa-check"></i> Enquiry Sent!';
+    btn.style.background = '#25d366';
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Enquiry';
+      btn.style.background = '';
+    }, 3000);
+  }
+
+  // COUNTER ANIMATION
+  function animateCounters() {
+    document.querySelectorAll('.stat-num').forEach(el => {
+      const target = el.textContent;
+      const num = parseFloat(target);
+      if (isNaN(num)) return;
+      const suffix = target.replace(/[\d.]/g,'');
+      let start = 0; const dur = 1500;
+      const step = (ts) => {
+        if (!start) start = ts;
+        const prog = Math.min((ts - start) / dur, 1);
+        const ease = 1 - Math.pow(1 - prog, 3);
+        el.textContent = (Math.round(num * ease)) + suffix;
+        if (prog < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  }
+  const statsObs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) { animateCounters(); statsObs.disconnect(); }
+  }, { threshold: 0.5 });
+  statsObs.observe(document.querySelector('.stats-bar'));
+</script>
+</body>
+</html>
